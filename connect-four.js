@@ -1,7 +1,27 @@
 'use strict';
 
+// Solution to codewars problem "Snail" (4 kyu)
+// http://www.codewars.com/kata/529962509ce9545c76000afa
+
+// Function takes 6 x 7 length nested array and determines whether a "Connect Four"
+// game represented by the arrray is completed or not, and if so, who won and
+// whether it was a draw
+
+// My strategy was to have the checks for vertical, horizontal, and diagonal
+// wins abstracted out to different functions, another function which checks for
+// draws, and the 'connectFour' function, which ties all of the logic together
+
 function connectFour(board) {
 
+  // winner will equal either 'R' if R has won, 'Y' if Y has won, or null
+  let winner = horizontal(board) ||
+               vertical(board) ||
+               diagTLBR(board) ||
+               diagBLTR(board);
+
+  // Will return the winner if there is one, or if not, either 'draw' or
+  // 'in progress' depending on whether the board is full
+  return winner ? winner : isFull(board) ? 'draw' : 'in progress';
 };
 
 function horizontal(board) {
@@ -13,7 +33,7 @@ function horizontal(board) {
       }
     }
   }
-  return 'in progress';
+  return null;
 };
 
 function vertical(board) {
@@ -25,7 +45,7 @@ function vertical(board) {
       }
     }
   }
-  return 'in progress';
+  return null;
 };
 
 
@@ -38,7 +58,7 @@ function diagTLBR(board) {
       }
     }
   }
-  return 'in progress';
+  return null;
 };
 
 function diagBLTR(board) {
@@ -50,7 +70,7 @@ function diagBLTR(board) {
       }
     }
   }
-  return 'in progress';
+  return null;
 };
 
 // will ONLY check if board is full, will depend on other functions to
@@ -61,16 +81,16 @@ function isFull(board) {
   });
 };
 
-let fullBoard = [['X','X','X','X','X','X','X'],
-                 ['X','X','X','X','X','X','X'],
-                 ['X','X','X','R','R','R','R'],
-                 ['X','X','X','Y','Y','R','Y'],
-                 ['X','X','X','Y','R','Y','Y'],
-                 ['X','X','Y','Y','R','R','R']];
-
-let board = [['-','-','-','-','-','-','-'],
-             ['-','-','-','-','-','-','-'],
-             ['-','-','-','R','Y','Y','R'],
-             ['-','-','-','Y','Y','Y','Y'],
-             ['-','-','-','Y','R','Y','Y'],
-             ['-','-','Y','Y','R','R','R']];
+// let fullBoard = [['X','X','X','X','X','X','X'],
+//                  ['X','X','X','X','X','X','X'],
+//                  ['X','X','X','R','R','R','R'],
+//                  ['X','X','X','Y','Y','R','Y'],
+//                  ['X','X','X','Y','R','Y','Y'],
+//                  ['X','X','Y','Y','R','R','R']];
+//
+// let board = [['-','-','-','-','-','-','-'],
+//              ['-','-','-','-','-','-','-'],
+//              ['-','-','-','R','Y','Y','R'],
+//              ['-','-','-','Y','Y','Y','Y'],
+//              ['-','-','-','Y','R','Y','Y'],
+//              ['-','-','Y','Y','R','R','R']];
