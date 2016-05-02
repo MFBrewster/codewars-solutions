@@ -1,6 +1,6 @@
 'use strict';
 
-// Solution to codewars problem "Snail" (4 kyu)
+// Solution to codewars problem "Connect Four" (4 kyu)
 // http://www.codewars.com/kata/529962509ce9545c76000afa
 
 // Function takes 6 x 7 length nested array and determines whether a "Connect Four"
