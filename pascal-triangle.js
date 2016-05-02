@@ -36,5 +36,3 @@ function pascalsTriangle(n) {
   // parameter, so that the nested array is flattened and concatenated
   return [].concat.apply([], tri);
 }
-
-console.log(pascalsTriangle(5));
