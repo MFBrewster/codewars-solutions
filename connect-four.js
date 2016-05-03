@@ -21,7 +21,8 @@ function connectFour(board) {
 
   // Will return the winner if there is one, or if not, either 'draw' or
   // 'in progress' depending on whether the board is full
-  return winner ? winner : isFull(board) ? 'draw' : 'in progress';
+  return winner ? winner :
+         isFull(board) ? 'draw' : 'in progress';
 };
 
 function horizontal(board) {
